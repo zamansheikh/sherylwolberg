@@ -15,4 +15,5 @@ class AppAssets {
 
   // Logos
   static const String appLogo = 'assets/logo/app_logo.svg';
+  static const String logo = 'assets/logo/logo.png';
 }

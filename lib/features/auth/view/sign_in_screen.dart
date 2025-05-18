@@ -15,7 +15,12 @@ class SignInScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Logo image (make sure to add this asset in pubspec.yaml)
-              SvgIcon(assetName: AppAssets.appLogo, width: 150, height: 80),
+              SvgIcon(
+                assetName: AppAssets.appLogo,
+                width: 150,
+                height: 100,
+                color: Colors.amber,
+              ),
               const SizedBox(height: 16),
 
               // Description text
