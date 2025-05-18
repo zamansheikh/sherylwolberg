@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:workflowx/core/routes/app_pages.dart';
 
 import '../../../core/themes/app_colors.dart';
 import '../../../core/themes/theme_controller.dart';
@@ -99,19 +97,6 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             SizedBox(height: 20.h),
-            // Button
-            Obx(
-              () => ElevatedButton(
-                onPressed: () {
-                 Get.toNamed(Routes.projects);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: appColors.buttonBackgroundColor,
-                  foregroundColor: Colors.white,
-                ),
-                child: Text(AppLocalizations.of(context)!.increment),
-              ),
-            ),
           ],
         ),
       ),
