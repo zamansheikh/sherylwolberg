@@ -8,6 +8,7 @@ import 'package:workflowx/features/auth/view/forget_password_screen.dart';
 import 'package:workflowx/features/home/views/file_report_screen.dart';
 import 'package:workflowx/features/home/views/privacy_policy_screen.dart';
 import 'package:workflowx/features/home/views/profile_details_screen.dart';
+import 'package:workflowx/features/home/views/report_preview_reply_screen.dart';
 import 'package:workflowx/features/home/views/report_preview_screen.dart';
 
 import '../../features/home/bindings/home_binding.dart';
@@ -43,5 +44,6 @@ class AppPages {
     GetPage(name: Routes.privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: Routes.report, page: () => const FileReportScreen()),
     GetPage(name: Routes.ticketDetails, page: () =>  ReportPreviewScreen()),
+    GetPage(name: Routes.reportReply, page: () =>  ReportDetailsWithMessagesScreen()),
   ];
 }

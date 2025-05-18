@@ -20,6 +20,7 @@ abstract class Routes {
   static const aboutUs = '/about-us';
   static const contactUs = '/contact-us';
   static const feedback = '/feedback';
+  static const reportReply = '/report-reply';
   static const help = '/help';
   static const logout = '/logout';
   static const changeLanguage = '/change-language';

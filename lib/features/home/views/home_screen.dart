@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
 import 'package:workflowx/core/routes/app_pages.dart';
+import 'package:workflowx/features/home/views/report_preview_reply_screen.dart';
 
 import '../widget/custom_buttom_navbar.dart';
 import '../widget/drone_card.dart';
@@ -90,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onReportPressed(String droneName) {
-    // TODO: Implement individual drone report button action
+    Get.toNamed(Routes.reportReply);
   }
 
   @override
