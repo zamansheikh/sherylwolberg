@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
+import 'package:workflowx/core/routes/app_pages.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -36,7 +38,7 @@ class SignInScreen extends StatelessWidget {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Handle sign in
+                    Get.toNamed(Routes.signInNow);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

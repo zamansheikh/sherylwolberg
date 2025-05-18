@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:workflowx/features/auth/view/sign_in_now_screen.dart';
 import 'package:workflowx/features/auth/view/sign_in_screen.dart';
 
 import '../../features/home/bindings/home_binding.dart';
@@ -16,5 +17,6 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(name: Routes.signIn, page: () => const SignInScreen()),
+    GetPage(name: Routes.signInNow, page: () => const SignInNowScreen()),
   ];
 }
