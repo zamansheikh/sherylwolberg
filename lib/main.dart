@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
           initialRoute: AppPages.initial,
-          navigatorKey: navigatorKey,
+          // navigatorKey: navigatorKey,
           getPages: AppPages.routes,
           locale: Get.deviceLocale,
           localizationsDelegates: [

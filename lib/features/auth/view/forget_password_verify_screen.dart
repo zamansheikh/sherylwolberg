@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:workflowx/core/routes/app_pages.dart';
 
 class ForgetPasswordVerifyScreen extends StatefulWidget {
   const ForgetPasswordVerifyScreen({super.key});
@@ -57,16 +59,11 @@ class _ForgetPasswordVerifyScreenState
         controller: controller,
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         maxLength: 1,
         decoration: InputDecoration(
           counterText: '',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           contentPadding: const EdgeInsets.all(0),
         ),
         onChanged: (value) {
@@ -123,9 +120,10 @@ class _ForgetPasswordVerifyScreenState
               // Code input boxes row
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: _codeControllers
-                    .map((controller) => _buildCodeBox(controller))
-                    .toList(),
+                children:
+                    _codeControllers
+                        .map((controller) => _buildCodeBox(controller))
+                        .toList(),
               ),
 
               const SizedBox(height: 24),
@@ -149,7 +147,7 @@ class _ForgetPasswordVerifyScreenState
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement verify action
+                    Get.toNamed(Routes.createNewPassword);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -157,10 +155,7 @@ class _ForgetPasswordVerifyScreenState
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text(
-                    'Verify',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  child: const Text('Verify', style: TextStyle(fontSize: 16)),
                 ),
               ),
 

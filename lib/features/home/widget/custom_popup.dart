@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
 import 'package:workflowx/core/utils/svg_icon.dart';
 
-class CustomLoaderPopup extends StatelessWidget {
-  const CustomLoaderPopup({super.key});
+class CustomPopUp extends StatelessWidget {
+  const CustomPopUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +26,18 @@ class CustomLoaderPopup extends StatelessWidget {
 
             // Success message text
             const Text(
-              'Your password has been reset successfully. You can now log in with your new credentials.',
+              'TICKET CREATED SUCCESSFULLY',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black87),
+              style: TextStyle(fontSize: 16, color: Colors.blue),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Your support ticket has been successfully submitted.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, color: Colors.blue),
             ),
 
             const SizedBox(height: 30),
-
-            // Blue loading spinner (circular progress indicator)
-            const SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(
-                strokeWidth: 6,
-                color: Colors.blue,
-              ),
-            ),
           ],
         ),
       ),

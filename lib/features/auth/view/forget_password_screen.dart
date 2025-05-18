@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:workflowx/core/routes/app_pages.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -29,10 +31,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               // Description Text
               const Text(
                 'Select which contact details should we use to reset your password.',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                ),
+                style: TextStyle(fontSize: 18, color: Colors.black87),
               ),
 
               const SizedBox(height: 32),
@@ -40,10 +39,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               // Email Label
               const Text(
                 'Email',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
 
               const SizedBox(height: 8),
@@ -71,7 +67,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement continue action
+                    Get.toNamed(Routes.forgotPasswordVerify);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -79,10 +75,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  child: const Text('Continue', style: TextStyle(fontSize: 16)),
                 ),
               ),
 

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:workflowx/features/auth/view/widget/custom_loader_popup.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
   const CreateNewPasswordScreen({super.key});
 
   @override
-  State<CreateNewPasswordScreen> createState() => _CreateNewPasswordScreenState();
+  State<CreateNewPasswordScreen> createState() =>
+      _CreateNewPasswordScreenState();
 }
 
 class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
@@ -56,10 +58,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
               // Instruction Text
               const Text(
                 'Create Your New password',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                ),
+                style: TextStyle(fontSize: 18, color: Colors.black87),
               ),
 
               const SizedBox(height: 24),
@@ -67,10 +66,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
               // New Password Label
               const Text(
                 'New Password',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
 
               const SizedBox(height: 8),
@@ -105,10 +101,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
               // Re-type Password Label
               const Text(
                 'Re-type password',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
 
               const SizedBox(height: 8),
@@ -146,7 +139,12 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement create new password logic
+                    showDialog(
+                      context: context,
+                      barrierDismissible:
+                          false, // user must wait for process to finish
+                      builder: (context) => const CustomLoaderPopup(),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

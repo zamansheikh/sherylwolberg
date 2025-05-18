@@ -139,7 +139,7 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement sign in
+                    Get.toNamed(Routes.home);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
