@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
-import 'package:workflowx/core/utils/svg_icon.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -15,11 +14,11 @@ class SignInScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Logo image (make sure to add this asset in pubspec.yaml)
-              SvgIcon(
-                assetName: AppAssets.appLogo,
+              Image.asset(
+                AppAssets.logo,
                 width: 150,
-                height: 100,
-                color: Colors.amber,
+                height: 80,
+                fit: BoxFit.contain,
               ),
               const SizedBox(height: 16),
 
@@ -45,7 +44,10 @@ class SignInScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text('Sign In', style: TextStyle(fontSize: 16)),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
