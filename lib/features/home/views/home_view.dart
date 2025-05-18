@@ -1,10 +1,8 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:workflowx/core/routes/app_pages.dart';
-import 'package:workflowx/features/projects/views/project_view.dart';
 
 import '../../../core/themes/app_colors.dart';
 import '../../../core/themes/theme_controller.dart';
