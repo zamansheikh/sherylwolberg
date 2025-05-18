@@ -60,7 +60,7 @@ class SignInScreen extends StatelessWidget {
                 height: 48,
                 child: OutlinedButton(
                   onPressed: () {
-                    // TODO: Handle sign up
+                    Get.toNamed(Routes.signUpNow);
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Colors.grey),

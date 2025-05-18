@@ -1,22 +1,26 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:workflowx/core/routes/app_pages.dart';
 
-class SignInNowScreen extends StatefulWidget {
-  const SignInNowScreen({super.key});
+import '../../../core/routes/app_pages.dart';
+
+class SignUpNowScreen extends StatefulWidget {
+  const SignUpNowScreen({super.key});
 
   @override
-  State<SignInNowScreen> createState() => _SignInNowScreenState();
+  State<SignUpNowScreen> createState() => _SignUpNowScreenState();
 }
 
-class _SignInNowScreenState extends State<SignInNowScreen> {
+class _SignUpNowScreenState extends State<SignUpNowScreen> {
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
+  bool _agreePrivacyPolicy = false;
 
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -26,6 +30,14 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
     setState(() {
       _obscurePassword = !_obscurePassword;
     });
+  }
+
+  void _toggleAgreePolicy(bool? newValue) {
+    if (newValue != null) {
+      setState(() {
+        _agreePrivacyPolicy = newValue;
+      });
+    }
   }
 
   @override
@@ -41,7 +53,7 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
 
               // Title
               const Text(
-                'Sign In Now',
+                'Create a new Account',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -51,15 +63,34 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
 
               const SizedBox(height: 32),
 
-              // Email label
+              // Name Label and TextField
+              const Text(
+                'Name',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  hintText: 'Enter yor Name...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                    horizontal: 12,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // Email Label and TextField
               const Text(
                 'Email',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
-
               const SizedBox(height: 8),
-
-              // Email TextField
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -77,15 +108,12 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
 
               const SizedBox(height: 24),
 
-              // Password label
+              // Password Label and TextField
               const Text(
                 'Password',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
-
               const SizedBox(height: 8),
-
-              // Password TextField with toggle icon
               TextField(
                 controller: _passwordController,
                 obscureText: _obscurePassword,
@@ -110,58 +138,60 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
                 ),
               ),
 
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
 
-              // Forgot password text aligned right
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    Get.toNamed(Routes.forgotPassword);
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(50, 20),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              // Privacy policy checkbox and text
+              Row(
+                children: [
+                  Checkbox(
+                    value: _agreePrivacyPolicy,
+                    onChanged: _toggleAgreePolicy,
+                    activeColor: Colors.blue,
                   ),
-                  child: const Text(
-                    'Forgot password?',
-                    style: TextStyle(color: Colors.blue, fontSize: 14),
+                  const Expanded(
+                    child: Text(
+                      'I agree with privacy policy.',
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
-                ),
+                ],
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
 
-              // Sign In button
+              // Sign Up button
               SizedBox(
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Implement sign in
-                  },
+                  onPressed:
+                      _agreePrivacyPolicy
+                          ? () {
+                            // TODO: Implement sign up
+                          }
+                          : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
+                    disabledBackgroundColor: Colors.blue.withOpacity(0.5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text('Sign In', style: TextStyle(fontSize: 16)),
+                  child: const Text('Sign Up', style: TextStyle(fontSize: 16)),
                 ),
               ),
 
               const Spacer(),
 
-              // Sign Up prompt
+              // Already have account? Sign In
               Center(
                 child: RichText(
                   text: TextSpan(
-                    text: 'Don’t have an Account? ',
+                    text: 'Already have an Account? ',
                     style: const TextStyle(color: Colors.black87, fontSize: 14),
                     children: [
                       TextSpan(
-                        text: 'Sign Up',
+                        text: 'Sign In',
                         style: const TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w600,
@@ -169,7 +199,7 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
                         recognizer:
                             TapGestureRecognizer()
                               ..onTap = () {
-                                Get.toNamed(Routes.signUpNow);
+                                Get.back();
                               },
                       ),
                     ],
