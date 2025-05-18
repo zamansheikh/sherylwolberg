@@ -1,0 +1,43 @@
+{
+  "@@locale": "en",
+  "homeTitle": "Home",
+  "@homeTitle": {},
+  "welcomeMessage": "Welcome to WorkflowX!",
+  "@welcomeMessage": {},
+  "count": "Counter: {value}",
+  "increment": "Increment",
+  "@increment": {},
+  "@count": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "changeLanguage": "Switch to Spanish",
+  "@changeLanguage": {
+    "description": "Button to change the app language to Spanish",
+    "type": "text"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Label for dark mode toggle",
+    "type": "text"
+  },
+  "lightMode": "Light Mode",
+  "@lightMode": {
+    "description": "Label for light mode toggle",
+    "type": "text"
+  },
+  "ecomode": "Eco Mode",
+  "@ecomode": {
+    "description": "Label for eco mode toggle",
+    "type": "text"
+  },
+  "projects": "Projects",
+  "refresh": "Refresh",
+  "retry": "Retry",
+  "noProjectsFound": "No projects found",
+  "onGoinProjects": "On goin Projects",
+  "allProjects": "All Projects"
+}

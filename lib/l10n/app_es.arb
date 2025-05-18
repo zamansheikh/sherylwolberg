@@ -1,0 +1,43 @@
+{
+  "@@locale": "es",
+  "homeTitle": "Inicio",
+  "@homeTitle": {},
+  "welcomeMessage": "¡Bienvenido a WorkflowX!",
+  "@welcomeMessage": {},
+  "count": "Contador: {value}",
+  "increment": "Incrementar",
+  "@increment": {},
+  "@count": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "changeLanguage": "Cambiar a español",
+  "@changeLanguage": {
+    "description": "Botón para cambiar el idioma de la aplicación a español",
+    "type": "text"
+  },
+  "darkMode": "Modo oscuro",
+  "@darkMode": {
+    "description": "Etiqueta para el interruptor de modo oscuro",
+    "type": "text"
+  },
+  "lightMode": "Modo claro",
+  "@lightMode": {
+    "description": "Etiqueta para el interruptor de modo claro",
+    "type": "text"
+  },
+  "ecomode": "Modo ecológico",
+  "@ecomode": {
+    "description": "Etiqueta para el interruptor de modo ecológico",
+    "type": "text"
+  },
+  "projects": "Projects",
+  "refresh": "Refresh",
+  "retry": "Retry",
+  "noProjectsFound": "No projects found",
+  "onGoinProjects": "On goin Projects",
+  "allProjects": "All Projects"
+}
