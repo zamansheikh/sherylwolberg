@@ -2,10 +2,10 @@
 // Home Screen Main Widget
 // ------------------------------
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
+import 'package:workflowx/core/routes/app_pages.dart';
 
-import '../widget/custom_buttom_navbar.dart';
-import '../widget/drone_card.dart';
 import '../widget/report_ticket_card.dart';
 
 class ReportsScreen extends StatefulWidget {
@@ -81,7 +81,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
   }
 
   void _onReportPressed(String droneName) {
-    // TODO: Implement individual drone report button action
+    Get.toNamed(Routes.reportReply, arguments: droneName);
   }
 
   @override
@@ -128,13 +128,16 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 itemCount: reportTickets.length,
                 itemBuilder: (context, index) {
                   final ticket = reportTickets[index];
-                  return ReportTicketCard(
-                    ticketNo: ticket['ticketNo']!,
-                    status: ticket['status']!,
-                    title: ticket['title']!,
-                    userName: ticket['userName']!,
-                    code: ticket['code']!,
-                    date: ticket['date']!,
+                  return InkWell(
+                    onTap: () => _onReportPressed(ticket['title']!),
+                    child: ReportTicketCard(
+                      ticketNo: ticket['ticketNo']!,
+                      status: ticket['status']!,
+                      title: ticket['title']!,
+                      userName: ticket['userName']!,
+                      code: ticket['code']!,
+                      date: ticket['date']!,
+                    ),
                   );
                 },
               ),
@@ -143,7 +146,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
             ],
           ),
         ),
-      ),            
+      ),
 
       backgroundColor: Colors.white,
     );

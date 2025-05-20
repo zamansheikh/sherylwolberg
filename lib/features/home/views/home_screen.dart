@@ -80,7 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onReportPressed(String droneName) {
-    Get.toNamed(Routes.reportReply);
+    print(droneName);
+    Get.toNamed(Routes.report, arguments: droneName);
   }
 
   @override
@@ -150,27 +151,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: droneCategories.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      width: 70,
-                      margin: EdgeInsets.only(
-                        right: index == droneCategories.length - 1 ? 0 : 16,
-                      ),
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 28,
-                            backgroundImage: NetworkImage(
-                              droneCategoryImages[index],
+                    return InkWell(
+                      onTap: () {
+                        _onReportPressed("Dummy Drone");
+                      },
+                      child: Container(
+                        width: 70,
+                        margin: EdgeInsets.only(
+                          right: index == droneCategories.length - 1 ? 0 : 16,
+                        ),
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 28,
+                              backgroundImage: NetworkImage(
+                                droneCategoryImages[index],
+                              ),
+                              backgroundColor: Colors.transparent,
                             ),
-                            backgroundColor: Colors.transparent,
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            droneCategories[index],
-                            style: const TextStyle(fontSize: 12),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                            const SizedBox(height: 8),
+                            Text(
+                              droneCategories[index],
+                              style: const TextStyle(fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
