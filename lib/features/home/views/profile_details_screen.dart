@@ -39,7 +39,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
         foregroundColor: Colors.black87,
         centerTitle: false,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -190,7 +190,10 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text('Update', style: TextStyle(fontSize: 18)),
+                  child: const Text(
+                    'Update',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
                 ),
               ),
             ],

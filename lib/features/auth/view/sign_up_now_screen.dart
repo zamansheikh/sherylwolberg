@@ -177,7 +177,10 @@ class _SignUpNowScreenState extends State<SignUpNowScreen> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text('Sign Up', style: TextStyle(fontSize: 16)),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                 ),
               ),
 

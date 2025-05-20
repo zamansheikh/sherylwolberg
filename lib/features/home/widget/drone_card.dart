@@ -74,7 +74,7 @@ class DroneCard extends StatelessWidget {
                 ),
                 child: const Text(
                   'Report Ticket',
-                  style: TextStyle(fontSize: 14),
+                  style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
               ),
             ),

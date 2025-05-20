@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:workflowx/core/constants/app_assets.dart';
 import 'package:workflowx/core/routes/app_pages.dart';
+import 'package:workflowx/core/utils/svg_icon.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -20,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
         foregroundColor: Colors.black87,
         centerTitle: false,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -90,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
               // Menu option: Edit Profile
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.person_outline),
+                leading: const SvgIcon(assetName: AppAssets.iconUser),
                 title: const Text(
                   'Edit Profile',
                   style: TextStyle(fontSize: 16),
@@ -103,7 +105,7 @@ class ProfileScreen extends StatelessWidget {
               // Menu option: Privacy Policy
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.policy_outlined),
+                leading: const SvgIcon(assetName: AppAssets.iconPolicy),
                 title: const Text(
                   'Privacy Policy',
                   style: TextStyle(fontSize: 16),
@@ -116,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
               // Menu option: Log Out
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.logout, color: Colors.red),
+                leading: const SvgIcon(assetName: AppAssets.iconLogout),
                 title: const Text(
                   'Log Out',
                   style: TextStyle(fontSize: 16, color: Colors.red),

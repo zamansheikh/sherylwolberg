@@ -25,7 +25,7 @@ class _ReportDetailsWithMessagesScreenState
 
   final List<String> uploadedImages = [
     'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1520022387568-79c35a45ca7c?auto=format&fit=crop&w=400&q=80',
+    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
     'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&q=80',
   ];
 

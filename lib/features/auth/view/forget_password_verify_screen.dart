@@ -83,7 +83,7 @@ class _ForgetPasswordVerifyScreenState
       appBar: AppBar(
         title: const Text('Forget Password'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -155,7 +155,10 @@ class _ForgetPasswordVerifyScreenState
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text('Verify', style: TextStyle(fontSize: 16)),
+                  child: const Text(
+                    'Verify',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                 ),
               ),
 

@@ -139,7 +139,7 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
                 height: 48,
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(Routes.home);
+                    Navigator.of(context).pushReplacementNamed(Routes.home);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -147,7 +147,10 @@ class _SignInNowScreenState extends State<SignInNowScreen> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: const Text('Sign In', style: TextStyle(fontSize: 16)),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                 ),
               ),
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workflowx/core/routes/app_pages.dart';
 import 'package:workflowx/features/auth/view/widget/custom_loader_popup.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
       appBar: AppBar(
         title: const Text('Forget Password'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
         backgroundColor: Colors.transparent,
@@ -145,6 +146,18 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                           false, // user must wait for process to finish
                       builder: (context) => const CustomLoaderPopup(),
                     );
+                    Future.delayed(const Duration(seconds: 2), () {
+                      if (context.mounted) {
+                        Navigator.pop(context); // Close the loader
+                        // Navigate to the next screen or show a success message
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Password reset successfully!'),
+                          ),
+                        );
+                        Navigator.pushReplacementNamed(context, Routes.signIn);
+                      }
+                    });
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -154,7 +167,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   ),
                   child: const Text(
                     'Create Now',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),

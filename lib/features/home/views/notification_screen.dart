@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
+import 'package:workflowx/core/routes/app_pages.dart';
 import 'package:workflowx/features/home/widget/notification_card.dart';
 
 // Main Notification Screen widget
@@ -40,6 +41,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
         elevation: 0,
         foregroundColor: Colors.black87,
         centerTitle: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            //If stack is not empty, pop the current screen
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            } else {
+              // If stack is empty, navigate to the home screen
+              Navigator.pushNamed(context, Routes.home);
+            }
+          },
+        ),
       ),
       body: SafeArea(
         child: Padding(

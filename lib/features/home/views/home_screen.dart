@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workflowx/core/constants/app_assets.dart';
 import 'package:workflowx/core/routes/app_pages.dart';
-import 'package:workflowx/features/home/views/report_preview_reply_screen.dart';
 
-import '../widget/custom_buttom_navbar.dart';
 import '../widget/drone_card.dart';
 import '../widget/report_ticket_card.dart';
 
@@ -19,8 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentNavIndex = 0;
-
   final List<String> droneCategories = [
     'DJI Mini',
     'DJI Air 3',
@@ -78,13 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
       'date': '10/5/2025',
     },
   ];
-
-  void _onNavTap(int index) {
-    setState(() {
-      _currentNavIndex = index;
-      // TODO: Navigate or change views accordingly
-    });
-  }
 
   void _onReportTicketPressed() {
     Get.toNamed(Routes.report);
@@ -257,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: const Text(
                     'Report Problem',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),
