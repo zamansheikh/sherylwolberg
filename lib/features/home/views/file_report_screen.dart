@@ -24,25 +24,33 @@ class _FileReportScreenState extends State<FileReportScreen> {
   List<String> selectedIssueTypes = [];
 
   List<XFile> selectedFiles = [];
+  String? customIssueText;
 
   final String droneModel = 'DJI Air 3';
 
-  // Pick multiple images/videos (max 10)
+  // Pick multiple images and videos (max 10 total)
   Future<void> _pickMedia() async {
     try {
-      final List<XFile> pickedFiles = await _picker.pickMultiImage();
-      if (pickedFiles.isNotEmpty) {
-        final combinedFiles = [...selectedFiles, ...pickedFiles];
-        if (combinedFiles.length > 10) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('You can select up to 10 files only')),
-          );
-          return;
-        }
-        setState(() {
-          selectedFiles = combinedFiles;
-        });
+      final List<XFile> pickedImages = await _picker.pickMultiImage();
+      final XFile? pickedVideo = await _picker.pickVideo(
+        source: ImageSource.gallery,
+      );
+      List<XFile> newFiles = [...pickedImages];
+      if (pickedVideo != null) {
+        newFiles.add(pickedVideo);
       }
+      final combinedFiles = [...selectedFiles, ...newFiles];
+      if (combinedFiles.length > 10) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('You can select up to 10 files only (photos/videos)'),
+          ),
+        );
+        return;
+      }
+      setState(() {
+        selectedFiles = combinedFiles;
+      });
     } catch (e) {
       debugPrint('Pick media error: $e');
     }
@@ -64,6 +72,7 @@ class _FileReportScreenState extends State<FileReportScreen> {
     setState(() {
       if (selectedIssueTypes.contains(issueType)) {
         selectedIssueTypes.remove(issueType);
+        if (issueType == 'Others') customIssueText = null;
       } else {
         selectedIssueTypes.add(issueType);
       }
@@ -194,27 +203,10 @@ class _FileReportScreenState extends State<FileReportScreen> {
               }).toList(),
               const SizedBox(height: 20),
 
-              // Issue Type header + See all link
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Select Issue Type',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      // TODO: Implement see all
-                    },
-                    child: const Text(
-                      'See all',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
+              // Issue Type header
+              const Text(
+                'Select Issue Type',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
 
               const SizedBox(height: 8),
@@ -222,26 +214,43 @@ class _FileReportScreenState extends State<FileReportScreen> {
               // Issue Types checkboxes
               ...issueTypes.map((issueType) {
                 final isSelected = selectedIssueTypes.contains(issueType);
-                return CheckboxListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(issueType),
-                  value: isSelected,
-                  onChanged: (_) => _toggleIssueType(issueType),
-                  controlAffinity: ListTileControlAffinity.leading,
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(issueType),
+                      value: isSelected,
+                      onChanged: (_) => _toggleIssueType(issueType),
+                      controlAffinity: ListTileControlAffinity.leading,
+                    ),
+                    if (issueType == 'Others' && isSelected)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 40, bottom: 8),
+                        child: TextField(
+                          onChanged:
+                              (val) => setState(() => customIssueText = val),
+                          decoration: const InputDecoration(
+                            hintText: 'Please specify your issue',
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      ),
+                  ],
                 );
               }).toList(),
 
               const SizedBox(height: 20),
 
-              // Uploaded Image header
+              // Uploaded Image/Video header
               const Text(
-                'Uploaded Image',
+                'Uploaded Image/Video',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
 
               const SizedBox(height: 12),
 
-              // Grid view of selected images
+              // Grid view of selected images and videos
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -270,12 +279,44 @@ class _FileReportScreenState extends State<FileReportScreen> {
                       ),
                     );
                   }
+                  final file = selectedFiles[index];
+                  final isVideo =
+                      file.path.toLowerCase().endsWith('.mp4') ||
+                      file.path.toLowerCase().endsWith('.mov');
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.file(
-                      File(selectedFiles[index].path),
-                      fit: BoxFit.cover,
-                    ),
+                    child:
+                        isVideo
+                            ? Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Container(
+                                  color: Colors.black12,
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.videocam,
+                                      size: 40,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Text(
+                                      'Video',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        backgroundColor: Colors.black54,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                            : Image.file(File(file.path), fit: BoxFit.cover),
                   );
                 },
               ),
