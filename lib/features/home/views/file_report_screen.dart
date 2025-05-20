@@ -296,7 +296,7 @@ class _FileReportScreenState extends State<FileReportScreen> {
                   ),
                   child: const Text(
                     'Submit Ticket',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
               ),
