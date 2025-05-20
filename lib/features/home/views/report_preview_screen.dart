@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 
 class ReportPreviewScreen extends StatelessWidget {
   ReportPreviewScreen({super.key});
@@ -18,13 +20,10 @@ class ReportPreviewScreen extends StatelessWidget {
 
   final List<String> uploadedImages = [
     'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1520022387568-79c35a45ca7c?auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80',
     'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&q=80',
     'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=400&q=80',
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80',
     'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&q=80',
+    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
     'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&q=80',
   ];
 
@@ -54,7 +53,7 @@ class ReportPreviewScreen extends StatelessWidget {
         foregroundColor: Colors.black87,
         centerTitle: false,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -120,6 +119,27 @@ class ReportPreviewScreen extends StatelessWidget {
                     ),
                   );
                 },
+              ),
+              //Add Button to close the report
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Close',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
               ),
             ],
           ),
